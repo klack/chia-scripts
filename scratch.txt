@@ -1,4 +1,4 @@
-chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ j-d /chia/dst/1/ -p 8c70cc58a37cc8f68b916fac8101e637ba999be58383e836335ab07f0524c2c09f2db9cee83c88f731ee7b40381a0eac -f b1833b2ff7c1b2a87654c93b3af6d07a1788b5edee7036e878b64a1b22ecfa7ba608152f1b368404037cef29fad1438a
+chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ -d /chia/dst/1/ -p 8c70cc58a37cc8f68b916fac8101e637ba999be58383e836335ab07f0524c2c09f2db9cee83c88f731ee7b40381a0eac -f b1833b2ff7c1b2a87654c93b3af6d07a1788b5edee7036e878b64a1b22ecfa7ba608152f1b368404037cef29fad1438a
 
 type $env:USERPROFILE\.ssh\id_rsa.pub | ssh plotter@192.168.7.200 "cat >> .ssh/authorized_keys"
 
@@ -8,19 +8,20 @@ watch -n 60 chia farm summary
 
 nano ~/.config/plotman/plotman.yaml
 
-dd if=/dev/zero of=~/500mb.test bs=1024 count=512000 && rsync -v --bwlimit=80000 --preallocate --remove-source-files --ignore-existing --compress-level=0 ~/500mb.test rsync://plotter@192.168.7.221:12000/farms/2/
-
 rsync -v --bwlimit=80000 --preallocate --progress --remove-source-files --compress-level=0 --ignore-existing /chia/dst/1/plot-k32-2021-06-16-06-26-b93d3c8ca34903b25e450b4d68b075aa013ef9627fb5f4b4cc32ec38043e6e07.plot rsync://plotter@192.168.7.221:12000/farms/1
 
-dd if=/dev/zero of=/chia/farms/11/transfer.test bs=1024 count=1024000 status=progress
+dd if=/dev/zero of=./test bs=1024 count=25600000 status=progress && rsync -v --progress --preallocate --remove-source-files --ignore-existing --compress-level=0 ./test rsync://plotter@192.168.7.221:12000/farms/2/
+dd if=/dev/zero of=/chia/farms/2/transfer.test bs=1024 count=10240000 status=progress
 
 rm /chia/tmp/1/* /chia/tmp/2/*
 
 find /chia/dst/1/* -type 'f' -size -100000M -print -delete
 find /chia/tmp/1/* -type 'f' -size -100000M -print -delete
 
-find /chia/farms/ -type 'f' -iname '*1cdd457d79eab4451fce49993015d170*' -print -delete
+find /chia/farms/ -type 'f' -iname '*65bf6d1929a6084da5f7*' -print -delete
 
 watch -n 60 chia farm summary
 
 tail -f ~/.chia/mainnet/log/debug.log
+
+ssh -p "22" "plotter@192.168.7.221" "df -aBK | grep \" $(echo "/chia/farms" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
