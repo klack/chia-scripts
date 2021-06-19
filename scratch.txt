@@ -1,6 +1,6 @@
 chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ -d /chia/dst/1/ -p 8c70cc58a37cc8f68b916fac8101e637ba999be58383e836335ab07f0524c2c09f2db9cee83c88f731ee7b40381a0eac -f b1833b2ff7c1b2a87654c93b3af6d07a1788b5edee7036e878b64a1b22ecfa7ba608152f1b368404037cef29fad1438a
 
-type $env:USERPROFILE\.ssh\id_rsa.pub | ssh plotter@192.168.7.200 "cat >> .ssh/authorized_keys"
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh plotter@192.168.7.221 "cat >> .ssh/authorized_keys"
 
 find /chia/farms/* -type 'f' -size -100000M -print -delete
 
@@ -18,10 +18,12 @@ rm /chia/tmp/1/* /chia/tmp/2/*
 find /chia/dst/1/* -type 'f' -size -100000M -print -delete
 find /chia/tmp/1/* -type 'f' -size -100000M -print -delete
 
-find /chia/farms/ -type 'f' -iname '*65bf6d1929a6084da5f7*' -print -delete
+find /chia/farms/ -type 'f' -iname '*5db032a62bff70a3bd751c4e*' -print -delete
 
 watch -n 60 chia farm summary
 
 tail -f ~/.chia/mainnet/log/debug.log
 
 ssh -p "22" "plotter@192.168.7.221" "df -aBK | grep \" $(echo "/chia/farms" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
+
+cd /chia/farms && sudo umount *
