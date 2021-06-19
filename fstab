@@ -1,23 +1,3 @@
-# /etc/fstab: static file system information.
-#
-# Use 'blkid' to print the universally unique identifier for a
-# device; this may be used with UUID= as a more robust way to name devices
-# that works even if disks are added and removed. See fstab(5).
-#
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
-
-LABEL=HIVE /hive-config ntfs-3g errors=remount-ro,fmask=0133,dmask=0022,noatime,remove_hiberfile,nofail 0 2
-
-UUID=b4b60f60-cd34-49c7-859b-53f802e8659c / ext4 errors=remount-ro,noatime,commit=120 0 1
-
-# LOGS OFF START
-#tmpfs /tmp tmpfs defaults,noatime,size=100M,mode=1777 0 0
-tmpfs /var/tmp tmpfs defaults,noatime,mode=1777 0 0
-tmpfs /var/log tmpfs defaults,noatime,mode=0755 0 0
-tmpfs /var/log/apt tmpfs defaults,noatime 0 0
-tmpfs /var/log/journal tmpfs defaults,noatime 0 0
-# LOGS OFF END
-
 UUID=db64670d-eec0-43f6-b8e0-190734d4dccc /chia/farms/1 ext4 nofail 0 0
 UUID=0ab88453-9e5d-4b78-aedd-30b532c62ef0 /chia/farms/2 ext4 nofail 0 0
 UUID=7d0092c6-2220-4d45-bdff-db2fd5e7f064 /chia/farms/3 ext4 nofail 0 0
@@ -31,5 +11,9 @@ UUID=bd0b33b5-bdfb-4401-9845-cf1f82f3c31d /chia/farms/10 ext4 nofail 0 0
 UUID=3b3aab04-54c4-4780-98e8-c24a2963eb4c /chia/farms/11 ext4 nofail 0 0
 UUID=c72e8bbc-b5be-4361-9a3d-1fd81544712f /chia/farms/12 ext4 nofail 0 0
 UUID=7e32b97d-fb2e-4103-a84c-8e10296700db /chia/farms/13 ext4 nofail 0 0
+UUID=3c066e86-4024-4811-8f90-3a224758ff72 /chia/farms/14 ext4 nofail 0 0
+UUID=1d057ebb-15db-4bbe-a0f5-a93bba30b88e /chia/farms/15 ext4 nofail 0 0
+UUID=3f87b6a6-7af6-4b6f-9ca3-12b9dd020471 /chia/farms/16 ext4 nofail 0 0
+#UUID= /chia/farms/ ext4 nofail 0 0
 #UUID= /chia/farms/ ext4 nofail 0 0
 #UUID= /chia/farms/ ext4 nofail 0 0

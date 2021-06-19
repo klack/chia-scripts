@@ -1,8 +1,10 @@
 #!/bin/sh -x
 logs-off && disk-expand
+timedatectl set-timezone America/Denver
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
 sudo apt install -y nmon iotop util-linux
+
 
 cd /opt/ && \
 sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
