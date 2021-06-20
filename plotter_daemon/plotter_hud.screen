@@ -2,7 +2,7 @@ caption always
 sessionname hud
 split -v
 split
-screen -t "Archival" /opt/chia-scripts/plotter_daemon/archive.sh
+screen -t "Archival" sh -c '/opt/chia-scripts/plotter_daemon/archive.sh;exec bash'
 focus
 screen -t "Plotter" /opt/chia-scripts/plotter_daemon/plot.sh
 focus
