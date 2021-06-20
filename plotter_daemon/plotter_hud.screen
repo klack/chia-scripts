@@ -8,3 +8,4 @@ screen -t "Plotter" sh -c '/opt/chia-scripts/plotter_daemon/plot.sh'
 focus
 screen -t "Monitor" sh -c '/opt/chia-scripts/plotter_daemon/monitor.sh'
 stuff mlndt
+layout save default

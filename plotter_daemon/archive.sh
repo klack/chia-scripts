@@ -1,2 +1,3 @@
 #!/bin/sh -x
-su -c 'plotman archive' user
+su -c 'sudo plotman interactive' user #get around hivos auto root login
+
