@@ -1,2 +1,2 @@
 #!/bin/sh -x
-plotman interactive
+plotman archive
