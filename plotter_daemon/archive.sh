@@ -1,2 +1,2 @@
 #!/bin/sh -x
-plotman archive
+su -c 'plotman archive' user
