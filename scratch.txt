@@ -4,7 +4,6 @@ chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ -d /chia/dst/ -p 8c70cc58a
 
 type $env:USERPROFILE\.ssh\id_rsa.pub | ssh plotter@192.168.7.221 "cat >> .ssh/authorized_keys"
 
-find /chia/farms/* -type 'f' -size -100000M -print -delete
 
 watch -n 60 chia farm summary
 
@@ -25,7 +24,6 @@ tail -f ~/.chia/mainnet/log/debug.log
 ssh -p "22" "plotter@192.168.7.221" "df -aBK | grep \" $(echo "/chia/farms" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
 
 cd /chia/farms && sudo umount *
-
 
 
 #On Brando startup
