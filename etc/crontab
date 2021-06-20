@@ -1,0 +1,2 @@
+@reboot bash /opt/chia_scripts/plotter_daemon/clean.sh
+@reboot screen -dm -c /opt/chia_scripts/plotter_daemon/plotter_hud.screen
