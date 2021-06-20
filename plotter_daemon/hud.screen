@@ -1,0 +1,4 @@
+screen -t "Monitor" sh /opt/plotter_daemon/monitor.sh
+stuff mlndt
+screen -t "Plotter" sh /opt/plotter_daemon/plot.sh
+screen -t "Archival" sh /opt/plotter_daemon/archive.sh

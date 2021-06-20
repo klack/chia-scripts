@@ -1,3 +1,5 @@
+. /opt/chia-blockchain/activate
+
 chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ -d /chia/dst/ -p 8c70cc58a37cc8f68b916fac8101e637ba999be58383e836335ab07f0524c2c09f2db9cee83c88f731ee7b40381a0eac -f b1833b2ff7c1b2a87654c93b3af6d07a1788b5edee7036e878b64a1b22ecfa7ba608152f1b368404037cef29fad1438a
 
 type $env:USERPROFILE\.ssh\id_rsa.pub | ssh plotter@192.168.7.221 "cat >> .ssh/authorized_keys"
@@ -13,12 +15,8 @@ rsync -v --bwlimit=80000 --preallocate --progress --remove-source-files --compre
 dd if=/dev/zero of=./test bs=1024 count=25600000 status=progress && rsync -v --progress --preallocate --remove-source-files --ignore-existing --compress-level=0 ./test rsync://plotter@192.168.7.221:12000/farms/2/
 dd if=/dev/zero of=/chia/farms/2/transfer.test bs=1024 count=10240000 status=progress
 
-rm /chia/tmp/1/* /chia/tmp/2/*
 
-find /chia/dst/* -type 'f' -size -100000M -print -delete
-find /chia/tmp/* -type 'f' -size -100000M -print -delete
-
-find /chia/farms/ -type 'f' -iname '*8104ee04784acdcc6ead*' -print -delete
+find /chia/farms/ -type 'f' -iname '*b0ed9a3143ff3e2dd84959c8d2fbfd51ef1f*' -print -delete
 
 watch -n 60 chia farm summary
 
@@ -27,3 +25,10 @@ tail -f ~/.chia/mainnet/log/debug.log
 ssh -p "22" "plotter@192.168.7.221" "df -aBK | grep \" $(echo "/chia/farms" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
 
 cd /chia/farms && sudo umount *
+
+
+
+#On Brando startup
+find /chia/dst/* -type 'f' -size -100000M -print -delete
+find /chia/tmp/* -type 'f' -size -100000M -print -delete
+find /chia/plotters/* -type 'f' -size -100000M -print -delete
