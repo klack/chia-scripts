@@ -5,16 +5,19 @@ sudo apt-get update && \
 sudo apt-get upgrade -y && \
 sudo apt install -y nmon iotop util-linux zip unzip
 
+#Install Chia
 cd /opt/ && \
 sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
 cd chia-blockchain && \
 sudo sh install.sh && \
 . ./activate && \
+ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
 chia init && \
 chia keys add
 
 #Plotman
-pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
+pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/
 
 #Mad Max Plotter
 sudo apt remove cmake && \
@@ -23,5 +26,8 @@ wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-lin
 chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
 sudo bash ./cmake-3.20.4-linux-x86_64.sh
 
-
-echo "Finshed, run ~/start_hud.sh to start Plotman"
+#Chia Scripts
+cd /opt/ && \
+sudo git clone https://github.com/klack/chia-scripts.git
+chmod +x /opt/chia-scripts/plotter_daemon/*.sh
+chmod +x /opt/chia-scripts/farmer_daemon/*.sh
