@@ -1,0 +1,4 @@
+screen bash
+title "this is my first screen"
+screen bash
+title " this is a screen reserved for editor"

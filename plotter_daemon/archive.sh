@@ -1,3 +1,3 @@
 #!/bin/sh -x
-source /opt/chia-blockchain/activate
+. /opt/chia-blockchain/activate
 plotman interactive
