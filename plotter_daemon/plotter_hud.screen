@@ -1,6 +1,10 @@
+caption always
 sessionname hud
+split -v
+split
+screen -t "Archival" /opt/chia-scripts/plotter_daemon/archive.sh
+focus
+screen -t "Plotter" /opt/chia-scripts/plotter_daemon/plot.sh
+focus
 screen -t "Monitor" /opt/chia-scripts/plotter_daemon/monitor.sh
 stuff mlndt
-screen -t "Plotter" /opt/chia-scripts/plotter_daemon/plot.sh
-screen -t "Archival" /opt/chia-scripts/plotter_daemon/archive.sh
-layout save default
