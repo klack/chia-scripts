@@ -12,6 +12,8 @@ nano ~/.config/plotman/plotman.yaml
 rsync -v --bwlimit=80000 --preallocate --progress --remove-source-files --compress-level=0 --ignore-existing /chia/dst/1/plot-k32-2021-06-16-06-26-b93d3c8ca34903b25e450b4d68b075aa013ef9627fb5f4b4cc32ec38043e6e07.plot rsync://plotter@192.168.7.221:12000/farms/1
 
 dd if=/dev/zero of=./test bs=1024 count=25600000 status=progress && rsync -v --progress --preallocate --remove-source-files --ignore-existing --compress-level=0 ./test rsync://plotter@192.168.7.221:12000/farms/2/
+dd if=/dev/zero of=./test bs=1024 count=256000 status=progress && rsync -v --progress --preallocate --remove-source-files --ignore-existing --compress-level=0 ./test rsync://plotter@192.168.7.240:12000/farms/19/
+
 dd if=/dev/zero of=/chia/farms/2/transfer.test bs=1024 count=10240000 status=progress
 
 
@@ -28,6 +30,7 @@ cd /chia/farms && sudo umount *
 
 #On Brando startup
 find /chia/dst/* -type 'f' -size -100000M -print -delete
-find /chia/tmp/* -type 'f' -size -100000M -print -delete
-find /chia/plotters/* -type 'f' -size -100000M -print -delete
+find /chia/tmp/* -type 'f' -print -delete
+
+
 find /chia/farms/* -type 'f' -size -100000M -print -delete
