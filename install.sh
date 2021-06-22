@@ -28,7 +28,7 @@ git submodule update --init && \
 #Chia Scripts
 cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
-sudo chmod +x /opt/chia-scripts/plotter_daemon/*.sh && \
+sudo chmod +x /opt/chia-scripts/plotter_daemon/*.sh
 
 #Farmer Daemon
 sudo chmod +x /opt/chia-scripts/farmer_daemon/*.sh
@@ -36,8 +36,7 @@ chia init && \
 chia keys add
 
 #Plotter Daemon
-sudo chmod +x /opt/chia-scripts/farmer_daemon/*.sh && \
-sudo cat /opt/chia-scripts/crontab >> /etc/crontab && \
+sudo cat /opt/chia-scripts/plotter_daemon/crontab >> /etc/crontab && \
 ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 

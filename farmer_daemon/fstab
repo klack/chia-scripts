@@ -33,3 +33,4 @@ UUID=585dad3e-9ee2-4435-87de-a3039e4a9df9 /chia/farms/19 ext4 nofail,user,rw 0 0
 #UUID= /chia/farms/ ext4 nofail,user,rw 0 0
 #UUID= /chia/farms/ ext4 nofail,user,rw 0 0
 #UUID= /chia/farms/ ext4 nofail,user,rw 0 0
+#tmpfs /chia/tmp/2 tmpfs rw,size=110G,nofail 0 0
