@@ -2,7 +2,7 @@ caption always
 sessionname hud
 split -v
 split
-screen -t "Status" sh -c '/opt/chia-scripts/farm/status.sh'
+screen -t "Status" sh -c '/opt/chia-scripts/farm/status.sh;'
 focus
 screen -t "Log" sh -c '/opt/chia-scripts/farm/log.sh'
 focus
