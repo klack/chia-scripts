@@ -1,5 +1,5 @@
 caption always
-sessionname hud
+sessionname plotter
 split -v
 split
 screen -t "Archival" sh -c '/opt/chia-scripts/plot/archive.sh;exec bash'
