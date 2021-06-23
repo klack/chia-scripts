@@ -1,2 +1,3 @@
 @reboot root    bash /opt/chia-scripts/farm/clean.sh
+@reboot root    bash /opt/chia-scripts/farm/farm.sh
 @reboot root    screen -dm -c /opt/chia-scripts/farm/hud.screen

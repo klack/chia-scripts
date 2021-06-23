@@ -30,14 +30,17 @@ git submodule update --init && \
 #Chia Scripts
 cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
-sudo chmod +x /opt/chia-scripts/plotter_daemon/*.sh
-sudo chmod +x /opt/chia-scripts/farmer_daemon/*.sh
+sudo chmod +x /opt/chia-scripts/plot/*.sh
+sudo chmod +x /opt/chia-scripts/farm/*.sh
 
 
-#Plotter Daemon
-sudo cat /opt/chia-scripts/plotter_daemon/crontab >> /etc/crontab && \
+#Plotter
+sudo cat /opt/chia-scripts/plot/crontab >> /etc/crontab && \
 ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
+
+#Farmer
+sudo cat /opt/chia-scripts/farm/crontab >> /etc/crontab
 
 #cmake
 # sudo apt remove cmake && \
