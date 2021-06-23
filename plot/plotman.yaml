@@ -27,7 +27,7 @@ commands:
         interactive:
                 # Set it to False if you don't want to auto start plotting when 'interactive' is ran.
                 # You can override this value from the command line, type "plotman interactive -h" for details
-                autostart_plotting: False
+                autostart_plotting: True
                 autostart_archiving: True
 
 # Where to plot and log.
@@ -40,7 +40,8 @@ directories:
         # If multiple directories share a common prefix, reports will
         # abbreviate and show just the uniquely identifying suffix.
         tmp:
-                - /var/tmp
+                - /var/plotters/1
+                - /var/plotters/2
 
         # Optional: Allows overriding some characteristics of certain tmp
         # directories. This contains a map of tmp directory names to
@@ -99,7 +100,7 @@ archiving:
   env:
     site_root: /chia/farms
     user: plotter
-    host: 192.168.7.240
+    host: 192.168.7.201
     rsync_port: 12000
     site: farms
 # Plotting scheduling parameters
