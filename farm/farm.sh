@@ -1,3 +1,3 @@
 #!/bin/bash +x
-source /opt/chia-blockchain/venv/bin/activate
+source /opt/chia-blockchain/activate
 chia start farmer
