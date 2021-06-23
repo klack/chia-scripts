@@ -1,16 +1,4 @@
-# /etc/fstab: static file system information.
-#
-# Use 'blkid' to print the universally unique identifier for a
-# device; this may be used with UUID= as a more robust way to name devices
-# that works even if disks are added and removed. See fstab(5).
-#
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
-# / was on /dev/ubuntu-vg/ubuntu-lv during curtin installation
-/dev/disk/by-id/dm-uuid-LVM-G80V15kTpHRGO08QDcjUwIKCNx3F0cGHRgUtnmRjI5bg8hKsDp4K6ucCZUBBar2Z / ext4 defaults 0 0
-# /boot was on /dev/sda2 during curtin installation
-/dev/disk/by-uuid/b1186f44-1d5f-40b2-b396-4c025e457797 /boot ext4 defaults 0 0
-/swap.img       none    swap    sw      0       0
-
+#Farm
 UUID=db64670d-eec0-43f6-b8e0-190734d4dccc /chia/farms/1 ext4 nofail,user,rw 0 0
 UUID=0ab88453-9e5d-4b78-aedd-30b532c62ef0 /chia/farms/2 ext4 nofail,user,rw 0 0
 UUID=7d0092c6-2220-4d45-bdff-db2fd5e7f064 /chia/farms/3 ext4 nofail,user,rw 0 0

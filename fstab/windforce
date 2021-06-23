@@ -1,0 +1,29 @@
+/dev/sda1: UUID="66d1bfbe-20e8-4841-a6f7-d0886cafaf1b" TYPE="ext4" PARTUUID="b3bd5474-df6d-1e43-9ab0-c3c781c1805b"
+/dev/sdb1: UUID="879c99b7-49a5-4c1e-8b56-998cc06aa62b" TYPE="ext4" PARTUUID="8138690e-c674-c345-ad58-b9901bb234b8"
+/dev/sdc1: UUID="57ebfaa0-384f-47d7-a20e-b9c288d54333" TYPE="ext4" PARTUUID="31badc47-3093-a14a-a4f7-0aefde624b85"
+/dev/sdd1: UUID="5f883a61-926e-42f8-a9d8-15b06144287f" TYPE="ext4" PARTUUID="d7be82d7-17e1-d649-83c1-3b64432c6a26"
+/dev/sde1: UUID="1bf5f391-4f5d-461c-9408-1e215b69f47c" TYPE="ext4" PARTUUID="dc89d961-1251-5e4b-9012-5e406809e5d5"
+/dev/sdf1: UUID="ca72161a-147d-4c46-9db5-944d401f5692" TYPE="ext4" PARTUUID="88e4aa6c-82f6-814e-8bb9-14571572ac7a"
+/dev/sdg1: UUID="7c12da18-4569-48c9-9c83-9a9e3211f769" TYPE="ext4" PARTUUID="a66bd47a-0e9c-0849-815e-4c492d77ed87"
+/dev/sdh1: UUID="634e04a3-e13d-49a5-8ecb-a21512f77380" TYPE="ext4" PARTUUID="4016b380-f298-f241-9e29-1b2b448fbebe"
+/dev/sdi1: UUID="512d99f8-2c57-42b7-bdce-0b83361b7751" TYPE="ext4" PARTUUID="a27d9070-2425-144f-af95-9016357130ce"
+/dev/sdj1: UUID="32740e42-9768-4514-bdae-776af16aa3cd" TYPE="ext4" PARTUUID="1eaaccd4-b42f-4049-8cea-d0ab9ab2976a"
+/dev/sdk1: UUID="c7934f79-5af6-4bf4-886f-ce519bbc1f23" TYPE="ext4" PARTUUID="1ae3711d-a913-e84d-9b05-6c7cc9800e65"
+/dev/sdl1: UUID="097f53fe-7193-42f9-97f9-8239f885ea0b" TYPE="ext4" PARTUUID="828b2e82-0dd6-4c4e-9e99-55777e46fb88"
+/dev/sdm:  UUID="c89c59e1-2dc0-4297-8f8a-28b22eff69fc" TYPE="ext4"
+
+
+
+UUID=66d1bfbe-20e8-4841-a6f7-d0886cafaf1b /chia/plotters/1 ext4 nofail user,rw 0 0
+UUID=879c99b7-49a5-4c1e-8b56-998cc06aa62b /chia/plotters/2 ext4 nofail user,rw 0 0
+UUID=57ebfaa0-384f-47d7-a20e-b9c288d54333 /chia/plotters/3 ext4 nofail user,rw 0 0
+UUID=5f883a61-926e-42f8-a9d8-15b06144287f /chia/plotters/4 ext4 nofail user,rw 0 0
+UUID=1bf5f391-4f5d-461c-9408-1e215b69f47c /chia/plotters/5 ext4 nofail user,rw 0 0
+UUID=ca72161a-147d-4c46-9db5-944d401f5692 /chia/farms/1 ext4 nofail user,rw 0 0
+UUID=7c12da18-4569-48c9-9c83-9a9e3211f769 /chia/farms/2 ext4 nofail user,rw 0 0
+UUID=634e04a3-e13d-49a5-8ecb-a21512f77380 /chia/farms/3 ext4 nofail user,rw 0 0
+UUID=512d99f8-2c57-42b7-bdce-0b83361b7751 /chia/farms/4 ext4 nofail user,rw 0 0
+UUID=32740e42-9768-4514-bdae-776af16aa3cd /chia/farms/5 ext4 nofail user,rw 0 0
+UUID=c7934f79-5af6-4bf4-886f-ce519bbc1f23 /chia/farms/6 ext4 nofail user,rw 0 0
+UUID=097f53fe-7193-42f9-97f9-8239f885ea0b /chia/farms/7 ext4 nofail user,rw 0 0
+UUID=c89c59e1-2dc0-4297-8f8a-28b22eff69fc /chia/farms/8 ext4 nofail user,rw 0 0

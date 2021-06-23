@@ -12,7 +12,9 @@ sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --r
 cd chia-blockchain && \
 sudo sh install.sh && \
 . ./activate && \
-ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/
+ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
+chia init && \
+chia keys add
 
 #Plotman
 pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
@@ -29,11 +31,8 @@ git submodule update --init && \
 cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
 sudo chmod +x /opt/chia-scripts/plotter_daemon/*.sh
-
-#Farmer Daemon
 sudo chmod +x /opt/chia-scripts/farmer_daemon/*.sh
-chia init && \
-chia keys add
+
 
 #Plotter Daemon
 sudo cat /opt/chia-scripts/plotter_daemon/crontab >> /etc/crontab && \
