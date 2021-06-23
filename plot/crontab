@@ -1,2 +1,2 @@
 @reboot root    bash /opt/chia-scripts/plot/clean.sh
-@reboot root    screen -dm -c /opt/chia-scripts/plot/plot_mm.screen
+@reboot root    screen -dm -c /opt/chia-scripts/plot/madmax.screen
