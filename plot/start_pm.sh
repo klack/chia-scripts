@@ -1,2 +1,2 @@
 #!/bin/sh -x
-source /opt/chia-blockchain/venv/bin/activate && plotman interactive
+screen -dm -c /opt/chia-scripts/plot/plotman.screen
