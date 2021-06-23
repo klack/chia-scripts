@@ -33,13 +33,12 @@ sudo git clone https://github.com/klack/chia-scripts.git && \
 sudo chmod +x /opt/chia-scripts/plot/*.sh
 sudo chmod +x /opt/chia-scripts/farm/*.sh
 
-
-#Plotter
+#Plotter Setup
 sudo cat /opt/chia-scripts/plot/crontab >> /etc/crontab && \
 ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
-#Farmer
+#Farmer Setup
 sudo cat /opt/chia-scripts/farm/crontab >> /etc/crontab
 
 #cmake
