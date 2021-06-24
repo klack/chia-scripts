@@ -35,7 +35,7 @@ sudo chmod +x /opt/chia-scripts/farm/*.sh && \
 sudo chmod +x /opt/chia-scripts/plot/*.sh
 
 #Plotter Setup
-sudo cat /opt/chia-scripts/plot/crontab >> /etc/crontab && \
+cat /opt/chia-scripts/plot/crontab | sudo tee -a /etc/crontab && \
 ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
