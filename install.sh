@@ -6,18 +6,13 @@ sudo apt-get update && \
 sudo apt-get upgrade -y && \
 sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev cmake g++ git
 
-#Install Chia
+#cmake
+sudo apt remove -y cmake && \
 cd /opt/ && \
-sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
-cd chia-blockchain && \
-sudo sh install.sh && \
-. ./activate && \
-ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
-chia init && \
-chia keys add
-
-#Plotman
-pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
+wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-linux-x86_64.sh && \
+chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
+sudo bash ./cmake-3.20.4-linux-x86_64.sh && \
+ln -s /opt/cmake-3.20.4-linux-x86_64/bin/* /usr/local/bin/
 
 #MadMax Plotter
 cd /opt/ && \
@@ -39,13 +34,20 @@ cat /opt/chia-scripts/plot/crontab | sudo tee -a /etc/crontab && \
 ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
+----------------------
+
+#Install Chia
+cd /opt/ && \
+sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
+cd chia-blockchain && \
+sudo sh install.sh && \
+. ./activate && \
+ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
+chia init && \
+chia keys add
+
+#Plotman
+pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
+
 #Farmer Setup
 cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab
-
-
-#cmake
-# sudo apt remove cmake && \
-# cd /opt/ && \
-# wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-linux-x86_64.sh && \
-# chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
-# sudo bash ./cmake-3.20.4-linux-x86_64.sh && \

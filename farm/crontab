@@ -1,3 +1,3 @@
 @reboot root    bash /opt/chia-scripts/farm/clean.sh
-@reboot root    su -c 'sudo /opt/chia-scripts/farm/farm.sh' user
-@reboot root    su -c 'sudo /opt/chia-scripts/farm/start_hud.sh' user
+@reboot klack   bash /opt/chia-scripts/farm/farm.sh
+@reboot klack   bash /opt/chia-scripts/farm/start_hud.sh
