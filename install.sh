@@ -40,7 +40,8 @@ ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
 ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
 #Farmer Setup
-sudo cat /opt/chia-scripts/farm/crontab >> /etc/crontab
+cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab
+
 
 #cmake
 # sudo apt remove cmake && \
