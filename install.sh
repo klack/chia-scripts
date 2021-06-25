@@ -25,9 +25,7 @@ git submodule update --init && \
 #Chia Scripts
 cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
-sudo chmod +x /opt/chia-scripts/*.sh && \
-sudo chmod +x /opt/chia-scripts/farm/*.sh && \
-sudo chmod +x /opt/chia-scripts/plot/*.sh
+find /opt/chia-scripts/ -iname '*.sh' -print -exec chmod 755 {} \;
 
 #Plotter Setup
 cat /opt/chia-scripts/plot/crontab | sudo tee -a /etc/crontab && \
