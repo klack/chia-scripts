@@ -1,2 +1,2 @@
 #!/bin/sh -x
-watch -n 10 plotman status
+su -c 'sudo watch -n 10 plotman status' user
