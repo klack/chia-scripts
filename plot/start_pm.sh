@@ -1,3 +1,3 @@
 #!/bin/sh -x
-/opt/chia-scripts/plot/pm_plot.sh
+su -c '/opt/chia-scripts/plot/pm_plot.sh' user
 screen -dm -c /opt/chia-scripts/plot/plotman.screen
