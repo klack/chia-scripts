@@ -40,8 +40,8 @@ directories:
         # If multiple directories share a common prefix, reports will
         # abbreviate and show just the uniquely identifying suffix.
         tmp:
-                - /chia/plotters/1
-                - /chia/plotters/2
+                - /chia/tmp/1
+                - /chia/tmp/2
 
         # Optional: Allows overriding some characteristics of certain tmp
         # directories. This contains a map of tmp directory names to
