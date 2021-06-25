@@ -1,2 +1,2 @@
 #!/bin/sh -x
-nohup plotman plot >> ~/plotman.log 2>&1 &
+su -c 'nohup plotman plot >> ~/plotman.log 2>&1 &' user
