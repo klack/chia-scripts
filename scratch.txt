@@ -34,3 +34,5 @@ find /chia/tmp/* -type 'f' -print -delete
 
 
 find /chia/farms/* -type 'f' -size -100000M -print -delete
+
+du -h --max-depth=1

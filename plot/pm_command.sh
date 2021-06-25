@@ -1,2 +1,2 @@
 #!/bin/sh -x
-su -c 'sudo plotman interactive' user 
+su -c 'sudo plotman archive' user 

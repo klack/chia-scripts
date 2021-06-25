@@ -1,7 +1,11 @@
 caption always
 sessionname plotter
 split -v
+split
+split
 screen -t "Plotter" sh -c '/opt/chia-scripts/plot/pm_command.sh;exec bash'
+focus
+screen -t "Archive" sh -c '/opt/chia-scripts/plot/pm_command.sh;exec bash'
 focus
 screen -t "Monitor" sh -c '/opt/chia-scripts/plot/monitor.sh'
 stuff mlndt
