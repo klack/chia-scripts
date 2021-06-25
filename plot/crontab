@@ -1,2 +1,2 @@
 @reboot root    bash /opt/chia-scripts/plot/clean.sh
-@reboot root    bash -c 'sleep 1m;/opt/chia-scripts/plot/start_mm.sh'
+@reboot root    bash /opt/chia-scripts/plot/start_mm.sh
