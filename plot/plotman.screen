@@ -2,7 +2,6 @@ caption always
 sessionname plotter
 split -v
 split
-focus
 screen -t "Plotter" sh -c '/opt/chia-scripts/plot/pm_command.sh;exec bash'
 focus
 screen -t "Archive" sh -c '/opt/chia-scripts/plot/archive_command.sh;exec bash'
