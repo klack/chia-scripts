@@ -27,13 +27,6 @@ cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
 find /opt/chia-scripts/ -iname '*.sh' -print -exec chmod 755 {} \;
 
-#Plotter Setup
-cat /opt/chia-scripts/plot/crontab | sudo tee -a /etc/crontab && \
-ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
-ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
-
-----------------------
-
 #Install Chia
 cd /opt/ && \
 sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
@@ -45,7 +38,20 @@ chia init && \
 chia keys add
 
 #Plotman
-pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main
+pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+cp /opt/chia-scripts/plot/plotman/plotman.yaml /home/user/.config/plotman/
+
+#----------------------
+
+#Plotter Setup
+mkdir -p /chia/tmp/1 /chia/tmp/2 /chia/dst && \
+cat /opt/chia-scripts/plot/crontab | sudo tee -a /etc/crontab && \
+ln -s /opt/chia-blockchain/venv/bin/plotman /usr/local/bin/ && \
+ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
+
+#SSH
+ssh-keygen -t rsa && \
+ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.240
 
 #Farmer Setup
 cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab
