@@ -1,7 +1,7 @@
 #!/bin/sh -x
 logs-off && \
 disk-expand && \
-timedatectl set-timezone America/Denver && \
+sudo timedatectl set-timezone America/Denver && \
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
 sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev cmake g++ git
@@ -25,7 +25,7 @@ git submodule update --init && \
 #Chia Scripts
 cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
-find /opt/chia-scripts/ -iname '*.sh' -print -exec chmod 755 {} \;
+find /opt/chia-scripts/ -iname '*.sh' -print -exec sudo chmod 755 {} \;
 
 #Install Chia
 cd /opt/ && \
@@ -33,7 +33,7 @@ sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --r
 cd chia-blockchain && \
 sudo sh install.sh && \
 . ./activate && \
-ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
+sudo ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
 chia init && \
 chia keys add
 
@@ -51,6 +51,7 @@ ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
 #SSH
 ssh-keygen -t rsa && \
+ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.7.240" && \
 ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.240
 
 #Farmer Setup
