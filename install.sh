@@ -4,22 +4,22 @@ disk-expand && \
 sudo timedatectl set-timezone America/Denver && \
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
-sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev cmake g++ git
+sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev g++ git
 
 #cmake
 sudo apt remove -y cmake && \
 cd /opt/ && \
-wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-linux-x86_64.sh && \
-chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
+sudo wget https://github.com/Kitware/CMake/releases/download/v3.20.4/cmake-3.20.4-linux-x86_64.sh && \
+sudo chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
 sudo bash ./cmake-3.20.4-linux-x86_64.sh && \
-ln -s /opt/cmake-3.20.4-linux-x86_64/bin/* /usr/local/bin/
+sudo ln -s /opt/cmake-3.20.4-linux-x86_64/bin/* /usr/local/bin/
 
 #MadMax Plotter
 cd /opt/ && \
 sudo git clone https://github.com/madMAx43v3r/chia-plotter.git && \
 cd chia-plotter && \
-git submodule update --init && \
-./make_devel.sh && \
+sudo git submodule update --init && \
+sudo ./make_devel.sh && \
 ./build/chia_plot --help
 
 #Chia Scripts
