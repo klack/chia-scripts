@@ -1,6 +1,5 @@
 #!/bin/sh -x
 logs-off && \
-disk-expand && \
 sudo timedatectl set-timezone America/Denver && \
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
@@ -38,7 +37,8 @@ chia init && \
 chia keys add
 
 #Plotman
-pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+sudo pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+mkdir -p /home/user/.config/plotman/ && \
 cp /opt/chia-scripts/plot/plotman/plotman.yaml /home/user/.config/plotman/
 
 #----------------------
@@ -51,7 +51,7 @@ ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 
 #SSH
 ssh-keygen -t rsa && \
-ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.7.240" && \
+ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.7.240"
 ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.240
 
 #Farmer Setup
