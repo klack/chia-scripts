@@ -2,7 +2,7 @@
 
 chia_plot -n -1 -r 32 -t /chia/tmp/1/ -2 /chia/tmp/2/ -d /chia/dst/ -p 8c70cc58a37cc8f68b916fac8101e637ba999be58383e836335ab07f0524c2c09f2db9cee83c88f731ee7b40381a0eac -f b1833b2ff7c1b2a87654c93b3af6d07a1788b5edee7036e878b64a1b22ecfa7ba608152f1b368404037cef29fad1438a
 
-type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.7.134 "cat >> .ssh/authorized_keys"
+type $env:USERPROFILE\.ssh\id_rsa.pub | ssh user@192.168.7.215 "mkdir -p ~/.ssh && touch authorized_keys && cat >> .ssh/authorized_keys"
 
 
 watch -n 60 chia farm summary
@@ -26,7 +26,7 @@ tail -f ~/.chia/mainnet/log/debug.log
 ssh -p "22" "plotter@192.168.7.221" "df -aBK | grep \" $(echo "/chia/farms" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
 
 cd /chia/farms && sudo umount *
-
+s
 
 #On Brando startup
 find /chia/dst/* -type 'f' -size -100000M -print -delete
@@ -36,3 +36,11 @@ find /chia/tmp/* -type 'f' -print -delete
 find /chia/farms/* -type 'f' -size -100000M -print -delete
 
 du -h --max-depth=1
+
+
+dd if=/dev/zero of=./test bs=1024 count=25600000 status=progress && rsync -v --progress --preallocate --remove-source-files --ignore-existing --compress-level=0 ./test /mnt/netcache
+
+
+rsync -v test rsync://plotter@192.168.7.143:12000/farms/
+
+df -BK | grep "/chia/netcache" | awk '{ gsub(/K$/,"",$4); print $6 ":" $4*1024 }'

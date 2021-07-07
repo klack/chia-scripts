@@ -3,7 +3,7 @@ logs-off && \
 sudo timedatectl set-timezone America/Denver && \
 sudo apt-get update && \
 sudo apt-get upgrade -y && \
-sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev g++ git
+sudo apt install -y nmon iotop util-linux zip unzip libsodium-dev g++ git make
 
 #cmake
 sudo apt remove -y cmake && \
@@ -37,9 +37,13 @@ chia init && \
 chia keys add
 
 #Plotman
-sudo pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
-mkdir -p /home/user/.config/plotman/ && \
-cp /opt/chia-scripts/plot/plotman/plotman.yaml /home/user/.config/plotman/
+sudo su
+cd /opt/ && \
+. /opt/chia-blockchain/activate && \
+pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+exit
+mkdir -p ~/.config/plotman/ && \
+cp /opt/chia-scripts/plot/plotman/plotman.yaml ~/.config/plotman/
 
 #----------------------
 
@@ -52,7 +56,7 @@ ln -s /opt/chia-plotter/build/chia_plot /usr/local/bin/
 #SSH
 ssh-keygen -t rsa && \
 ssh-keygen -f "/root/.ssh/known_hosts" -R "192.168.7.240"
-ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.240
+ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.144
 
 #Farmer Setup
 cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab

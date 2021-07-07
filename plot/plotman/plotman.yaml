@@ -96,13 +96,36 @@ directories:
 #
 # Complete example: https://github.com/ericaltendorf/plotman/wiki/Archiving
 archiving:
-  target: rsyncd
+  target: custom
   env:
-    site_root: /chia/farms
+    site_root: /chia/netcache
     user: plotter
-    host: 192.168.7.240
+    host: 192.168.7.144
     rsync_port: 12000
-    site: farms
+    site: chia
+    ssh_port: 22
+  target_definitions:
+    custom:
+      env:
+        command: rsync
+        options: --bwlimit=110000 --preallocate --remove-source-files --skip-compress plot --whole-file
+        site_root: null
+      disk_space_script: |
+        #!/bin/bash
+        set -evx
+        site_root_stripped=$(echo "${site_root}" | sed 's;/\+$;;')
+        # printf with %.0f used to handle mawk such as in Ubuntu Docker images
+        # otherwise it saturates and you get saturated sizes like 2147483647
+        ssh -p "${ssh_port}" "${user}@${host}" "df -aBK | grep \" $(echo "${site_root_stripped}" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
+      transfer_script: |
+          #!/bin/bash
+          set -evx
+          echo Launching transfer activity
+          relative_path=$(realpath --canonicalize-missing --relative-to="${site_root}" "${destination}")
+          url_root="rsync://${user}@${host}:${rsync_port}/${site}"
+          "${command}" ${options} "${source}" "${url_root}/${relative_path}"
+      transfer_process_name: "{command}"
+      transfer_process_argument_prefix: "rsync://{user}@{host}:{rsync_port}/{site}"
 # Plotting scheduling parameters
 scheduling:
         # Run a job on a particular temp dir only if the number of existing jobs
