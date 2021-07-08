@@ -44,3 +44,25 @@ dd if=/dev/zero of=./test bs=1024 count=25600000 status=progress && rsync -v --p
 rsync -v test rsync://plotter@192.168.7.143:12000/farms/
 
 df -BK | grep "/chia/netcache" | awk '{ gsub(/K$/,"",$4); print $6 ":" $4*1024 }'
+
+Sequential WRITE speed with big blocks (this should be near the number you see in the specifications for your drive):
+fio --name TEST --eta-newline=5s --filename=fio-tempfile.dat --rw=write --size=500m --io_size=10g --blocksize=1024k --ioengine=libaio --fsync=10000 --iodepth=32 --direct=1 --numjobs=1 --runtime=60 --group_reporting
+
+Sequential READ speed with big blocks (this should be near the number you see in the specifications for your drive):
+fio --name TEST --eta-newline=5s --filename=fio-tempfile.dat --rw=read --size=500m --io_size=10g --blocksize=1024k --ioengine=libaio --fsync=10000 --iodepth=32 --direct=1 --numjobs=1 --runtime=60 --group_reporting
+
+
+cd .. && \
+sudo umount /mnt/tmp && \
+sudo mdadm --stop /dev/md0 && \
+sudo mdadm --zero-superblock /dev/sdd /dev/sde /dev/sdf /dev/sdg /dev/sdh /dev/sdi /dev/sdj /dev/sdk && \
+sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=8 --chunk=4M /dev/sdd /dev/sde /dev/sdf /dev/sdg /dev/sdh /dev/sdi /dev/sdj /dev/sdk
+
+sudo mkfs -F -t ext4 /dev/md0 && \
+sudo mount /dev/md0 /mnt/tmp && \
+sudo chmod 777 /mnt/tmp && \
+cd tmp
+
+
+
+ssh -p "22" "plotter@192.168.7.144" "df -aBK | grep \" $(echo "/chia/netcache" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
