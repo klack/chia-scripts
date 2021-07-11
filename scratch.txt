@@ -66,3 +66,8 @@ cd tmp
 
 
 ssh -p "22" "plotter@192.168.7.144" "df -aBK | grep \" $(echo "/chia/netcache" | sed 's;/\+$;;')/\" | awk '{ gsub(/K\$/,\"\",\$4); printf \"%s:%.0f\n\", \$6, \$4*1024 }'"
+
+while [ $(ps -a | grep rsync | awk '{print $NF}' | wc -w) -gt 10 ]; do sleep 1; done
+
+
+instances=$(pidof rsync | wc -w)

@@ -13,6 +13,9 @@ sudo chmod +x ./cmake-3.20.4-linux-x86_64.sh && \
 sudo bash ./cmake-3.20.4-linux-x86_64.sh && \
 sudo ln -s /opt/cmake-3.20.4-linux-x86_64/bin/* /usr/local/bin/
 
+screen -XS hud quit
+screen -XS farmer quit
+rm -rf /opt/chia-plotter
 #MadMax Plotter
 cd /opt/ && \
 sudo git clone https://github.com/madMAx43v3r/chia-plotter.git && \
@@ -26,23 +29,25 @@ cd /opt/ && \
 sudo git clone https://github.com/klack/chia-scripts.git && \
 find /opt/chia-scripts/ -iname '*.sh' -print -exec sudo chmod 755 {} \;
 
+screen -XS hud quit
+screen -XS farmer quit
+chia stop -d all
 #Install Chia
 cd /opt/ && \
+sudo rm -rf chia-blockchain && \
 sudo git clone https://github.com/Chia-Network/chia-blockchain.git -b latest --recurse-submodules && \
 cd chia-blockchain && \
 sudo sh install.sh && \
-. ./activate && \
 sudo ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/ && \
+. ./activate && \
 chia init && \
 chia keys add
 
 #Plotman
-sudo su
 cd /opt/ && \
 . /opt/chia-blockchain/activate && \
-pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
-exit
-mkdir -p ~/.config/plotman/ && \
+sudo pip install --force-reinstall git+https://github.com/ericaltendorf/plotman@main && \
+sudo mkdir -p ~/.config/plotman/ && \
 cp /opt/chia-scripts/plot/plotman/plotman.yaml ~/.config/plotman/
 
 #----------------------
