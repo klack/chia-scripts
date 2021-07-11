@@ -39,8 +39,11 @@ directories:
         # If multiple directories share a common prefix, reports will
         # abbreviate and show just the uniquely identifying suffix.
         tmp:
-                - /chia/tmp/1
-                - /chia/tmp/2
+                - /chia/plotters/1
+                - /chia/plotters/2
+                - /chia/plotters/3
+                - /chia/plotters/4
+                - /chia/plotters/5
 
         # Optional: tmp2 directory.  If specified, will be passed to
         # chia plots create as -2.  Only one tmp2 directory is supported.
@@ -54,7 +57,7 @@ directories:
         # If dst is commented out, the tmp directories will be used as the
         # buffer.
         dst:
-                - /chia/dst
+                - /chia/farms/9
 
 # Archival configuration.  Optional; if you do not wish to run the
 # archiving operation, comment this section out.  Almost everyone
