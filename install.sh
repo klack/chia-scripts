@@ -66,5 +66,3 @@ ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.144
 #Farmer Setup
 cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab
 
-
-
