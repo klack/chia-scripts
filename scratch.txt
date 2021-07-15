@@ -73,10 +73,10 @@ while [ $(ps -a | grep rsync | awk '{print $NF}' | wc -w) -gt 10 ]; do sleep 1; 
 instances=$(pidof rsync | wc -w)
 
 
-
-sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=6 /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf
+sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=5 /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf
+sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=8 /dev/sdd /dev/sde /dev/sdf /dev/sdg /dev/sdh /dev/sdi /dev/sdj /dev/sdk
 cat /proc/mdstat
 
-
+sudo mdadm --assemble --scan --verbose
 sudo mdadm --detail --scan | tee –a /etc/mdadm/mdadm.conf
 sudo update-initramfs -u
