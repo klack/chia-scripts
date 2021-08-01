@@ -1,0 +1,3 @@
+@reboot klack   bash /opt/chia-scripts/farm/clean.sh
+@reboot klack   bash /opt/chia-scripts/farm/harvest.sh
+@reboot klack   bash /opt/chia-scripts/farm/start_hud.sh
