@@ -88,3 +88,7 @@ sudo mdadm --assemble --scan --verbose
 sudo mdadm --detail --scan | sudo tee –a /etc/mdadm/mdadm.conf
 sudo update-initramfs -u
 
+
+
+
+rsync -v rsync://klack@192.168.7.240:12000/crt/* .
