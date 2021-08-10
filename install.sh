@@ -41,7 +41,6 @@ cd chia-blockchain && \
 sudo sh install.sh && \
 sudo ln -s /opt/chia-blockchain/venv/bin/chia /usr/local/bin/
 . ./activate
-chia keys delete_all
 
 chia init && \
 chia keys add
@@ -70,10 +69,10 @@ ssh-copy-id -i /root/.ssh/id_rsa.pub plotter@192.168.7.144
 cat /opt/chia-scripts/farm/crontab | sudo tee -a /etc/crontab
 
 #Copy CRT Keys
-chia keys delete_all
 rm -r /tmp/crt
 mkdir -p /tmp/crt && cd /tmp/crt
 rsync -v rsync://klack@192.168.7.240:12000/crt/* .
 chia init -c /tmp/crt
 rm -r /tmp/crt
+chia run_daemon
 nano ~/.chia/mainnet/config/config.yaml

@@ -92,3 +92,13 @@ sudo update-initramfs -u
 
 
 rsync -v rsync://klack@192.168.7.240:12000/crt/* .
+
+
+sudo mkfs -t ext4 -F /dev/sdl && \
+sudo mkfs -t ext4 -F /dev/sdm && \
+sudo mkfs -t ext4 -F /dev/sdn && \
+sudo mkfs -t ext4 -F /dev/sdo && \
+sudo mkfs -t ext4 -F /dev/sdp && \
+sudo mkfs -t ext4 -F /dev/sdq && \
+sudo mkfs -t ext4 -F /dev/sdr && \
+sudo mkfs -t ext4 -F /dev/sds
